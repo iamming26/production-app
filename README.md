@@ -2,7 +2,7 @@
 system daily production
 
 # installation
-1. clone aplikasi from githun
+1. clone aplikasi
 2. pastikan composer sudah terinstall jalankan perintah => composer install
 3. salin file .env.example menjadi .env
 4. untuk database bisa disesuaikan dengan device
