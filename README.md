@@ -25,10 +25,12 @@ system daily production
 1. Admin
     Username: EMP001
     Password: 123
-2. Supervisor
+   
+3. Supervisor
     Username: EMP002
     Password: 123
-3.Operator
+   
+3. Operator
     Username: EMP003
     Password: 123
 
