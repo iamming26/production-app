@@ -11,6 +11,9 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
+    
+=======
 
     <div class="card shadow-sm mt-3">
         {{-- <div class="card-header d-flex justify-content-between align-items-center">
@@ -184,4 +187,5 @@
 
     option && myChart.setOption(option);
 </script>
+>>>>>>> dev-romi
 @endsection

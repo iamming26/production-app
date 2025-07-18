@@ -43,6 +43,12 @@
                 @endforelse
                 </tbody>
             </table>
+<<<<<<< HEAD
+            <div class="d-flex justify-content-center mt-3">
+                {{ $lots->links() }}
+            </div>
+=======
+>>>>>>> dev-romi
         </div>
     </div>
 @endsection

@@ -14,6 +14,15 @@ class ProductionSeeder extends Seeder
      */
     public function run(): void
     {
+<<<<<<< HEAD
+        foreach (range(1, 2000) as $i) {
+            Production::create([
+                'date' => \Carbon\Carbon::parse('2025-06-01')->addDays($i - 1),
+                'shift' => 'Shift ' . rand(1, 3),
+                'workcenter_id' => 'WC' . str_pad(rand(1, 15) + 1, 2, '0', STR_PAD_LEFT),
+                'lot_id' => 'LOT' . str_pad(rand(1, 100) + 1, 2, '0', STR_PAD_LEFT),
+                'qty_output' => rand(20, 150),
+=======
         foreach (range(1, 100) as $i) {
             Production::create([
                 'date' => \Carbon\Carbon::parse('2025-06-01')->addDays($i - 1),
@@ -41,6 +50,7 @@ class ProductionSeeder extends Seeder
                 'qty_output' => rand(20, 150),
                 'operator_id' => 'EMP00' . rand(3, 100),
                 'note' => 'Production note ' . $i,
+>>>>>>> dev-romi
             ]);
         }
     }

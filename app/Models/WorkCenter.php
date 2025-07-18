@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class WorkCenter extends Model
 {
+<<<<<<< HEAD
+    protected $fillable = ['code', 'name', 'desc'];
+=======
     protected $primaryKey = 'code';
     
     protected $fillable = ['code', 'name', 'desc'];
@@ -13,4 +16,5 @@ class WorkCenter extends Model
     protected $casts = [
         'code' => 'string',
     ];
+>>>>>>> dev-romi
 }

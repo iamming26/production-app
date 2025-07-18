@@ -18,8 +18,13 @@ return new class extends Migration
             $table->string('workcenter_id');
             $table->string('lot_id');
             $table->integer('qty_output');
+<<<<<<< HEAD
+            // $table->string('operator_id');
+            // $table->text('note')->nullable();
+=======
             $table->string('operator_id');
             $table->text('note')->nullable();
+>>>>>>> dev-romi
             $table->timestamps();
         });
     }
