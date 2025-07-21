@@ -2,13 +2,16 @@
     <h5 class="text-center text-white mb-4">PT Padma Soode</h5>
     <ul class="nav flex-column">
 
-        @if (Auth::user()->role === 'admin')
+        @if ($user->role === 'admin')
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.users.index') }}">Users</a>
+            </li>
         @endif
 
-        @if (Auth::user()->role === 'supervisor')
+        @if ($user->role === 'supervisor')
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('supervisor.dashboard') }}">Dashboard</a>
             </li>
@@ -23,7 +26,7 @@
             </li>
         @endif
 
-        @if (Auth::user()->role === 'operator')
+        @if ($user->role === 'operator')
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('operator.dashboard') }}">Dashboard</a>
             </li>
