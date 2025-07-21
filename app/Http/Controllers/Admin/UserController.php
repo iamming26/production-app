@@ -13,13 +13,13 @@ class UserController extends Controller
     {
         // Get data users
         $users = DB::table('users')
-            ->select('id', 'employee_id', 'name', 'role')
+            ->select('employee_id', 'name', 'role')
             ->whereNot('role', 'admin')
             ->get();
 
         return view('admin.users.index',[
             'user' => Auth::user(),
-            'users' => $users
+            'list_users' => $users
         ]);
     }
 

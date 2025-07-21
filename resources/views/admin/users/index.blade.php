@@ -17,15 +17,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($users as $user)
+                    @foreach($list_users as $user)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $user->employee_id }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->role }}</td>
                             <td>
-                                <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                                <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="d-inline">
+                                <a href="{{ route('admin.users.edit', $user->employee_id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                <form action="{{ route('admin.users.destroy', $user->employee_id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger">Delete</button>

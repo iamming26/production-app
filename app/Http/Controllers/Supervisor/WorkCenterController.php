@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\WorkCenter;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Throwable;  
@@ -14,28 +15,22 @@ class WorkCenterController extends Controller
 {
     public function index()
     {
-        try {
-            DB::beginTransaction();
+        $workcenters = WorkCenter::select('code', 'name', 'desc')
+            ->orderBy('code', 'asc')
+            ->get();
 
-            $workcenters = WorkCenter::select('id', 'code', 'name', 'desc')->paginate(10);
-
-            DB::commit();
-            return view('supervisor.work-center.index', [
-                'workcenters' => $workcenters,
-            ]);
-
-        } catch (Throwable $e) {
-            DB::rollBack();
-
-            return redirect()->route('supervisor.work-center.index')
-                ->withErrors(['error' => 'Gagal mengambil data: ' . $e->getMessage()]);
-        }
+        return view('supervisor.work-center.index', [
+            'workcenters' => $workcenters,
+            'user' => Auth::user(),
+        ]);
 
     }
 
     public function create()
-    {
-        return view('supervisor.work-center.create');
+    {   
+        return view('supervisor.work-center.create', [
+            'user' => Auth::user(),
+        ]);
     }
 
     public function store(Request $request)

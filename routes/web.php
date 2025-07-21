@@ -8,7 +8,7 @@ Route::get('/login', [\App\Http\Controllers\LoginController::class, 'index'])->n
 Route::post('/login', [\App\Http\Controllers\LoginController::class, 'authenticate'])->name('login.authenticate');
 Route::get('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
 
-Route::middleware(['auth', 'isAdmin'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'isAdmin'])->prefix('/admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
     Route::get('/users', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.index');
     Route::get('/users/create', [\App\Http\Controllers\Admin\UserController::class, 'create'])->name('users.create');
@@ -18,7 +18,7 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->name('admin.')->group(f
     Route::delete('/users/{id}', [\App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('users.destroy');
 });
 
-Route::middleware(['auth', 'isSupervisor'])->prefix('supervisor')->name('supervisor.')->group(function () {
+Route::middleware(['auth', 'isSupervisor'])->prefix('/supervisor')->name('supervisor.')->group(function () {
     Route::get('/dashboard', [\App\Http\Controllers\Supervisor\DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/work-center', [\App\Http\Controllers\Supervisor\WorkCenterController::class, 'index'])->name('work-center');
@@ -33,7 +33,7 @@ Route::middleware(['auth', 'isSupervisor'])->prefix('supervisor')->name('supervi
     Route::get('/report', [App\Http\Controllers\Supervisor\ReportController::class, 'index'])->name('report');
 });
 
-Route::middleware(['auth', 'isOperator'])->prefix('operator')->name('operator.')->group(function () {
+Route::middleware(['auth', 'isOperator'])->prefix('/operator')->name('operator.')->group(function () {
     Route::get('/dashboard', [\App\Http\Controllers\Operator\DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/production/create', [\App\Http\Controllers\Operator\ProductionController::class, 'create'])->name('production.create');

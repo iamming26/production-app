@@ -43,9 +43,6 @@
                 @endforelse
                 </tbody>
             </table>
-            <div class="d-flex justify-content-center mt-3">
-                {{ $lots->links() }}
-            </div>
         </div>
     </div>
 @endsection

@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('work_centers', function (Blueprint $table) {
-            $table->id();
             $table->string('code')->unique();
             $table->string('name');
             $table->text('desc')->nullable();

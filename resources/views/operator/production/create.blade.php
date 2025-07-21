@@ -9,6 +9,7 @@
         
     <form action="{{ route('operator.production.store') }}" method="POST">
         @csrf
+        <input type="hidden" name="employee_id" value="{{ $user->employee_id }}">
         <div class="mb-3">
             <label for="date" class="form-label">Date</label>
             <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" name="date" value="{{ $date }}" readonly>

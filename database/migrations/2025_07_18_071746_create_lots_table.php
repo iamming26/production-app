@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('lots', function (Blueprint $table) {
-            $table->id();
             $table->string('lot_id')->unique();
             $table->integer('qty');
             $table->integer('qty_remaining');

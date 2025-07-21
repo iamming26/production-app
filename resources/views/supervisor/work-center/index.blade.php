@@ -33,9 +33,6 @@
                     @endforelse
                 </tbody>
             </table>
-            <div class="d-flex justify-content-center mt-3 mt-3">
-                {{ $workcenters->links() }}
-            </div>
         </div>
     </div>
 @endsection

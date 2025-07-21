@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Supervisor;
 use App\Http\Controllers\Controller;
 use App\Models\Production;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReportController extends Controller
 {
@@ -25,11 +26,19 @@ class ReportController extends Controller
         // Ambil data
         $productions = $query->with(['workcenter', 'lot'])->get();
 
-        return view('supervisor.report.index', compact('productions'));
+        return view('supervisor.report.index', [
+            'productions' => $productions,
+            'user' => Auth::user(),
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'shift' => $request->shift,
+        ]);
     }
 
     public function detail()
     {
-        return view('supervisor.report.detail');
+        return view('supervisor.report.detail', [
+            'user' => Auth::user(),
+        ]);
     }
 }

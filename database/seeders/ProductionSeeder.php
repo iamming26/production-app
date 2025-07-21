@@ -21,6 +21,8 @@ class ProductionSeeder extends Seeder
                 'workcenter_id' => 'WC' . str_pad(rand(1, 15) + 1, 2, '0', STR_PAD_LEFT),
                 'lot_id' => 'LOT' . str_pad(rand(1, 100) + 1, 2, '0', STR_PAD_LEFT),
                 'qty_output' => rand(20, 150),
+                'operator_id' => 'EMP00' . rand(3, 100),
+                'note' => 'Production note ' . $i,
             ]);
         }
     }

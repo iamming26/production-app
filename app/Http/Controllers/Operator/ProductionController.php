@@ -8,6 +8,7 @@ use App\Models\Production;
 use App\Models\WorkCenter;
 use Carbon\Carbon;
 use DateTime;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Throwable; 
@@ -36,8 +37,8 @@ class ProductionController extends Controller
 
     public function create()
     {
-        $lots = Lot::select('*')->where('status', 'available')->get();
-        $workcenters = WorkCenter::select('*')->get();
+        $lots = Lot::where('status', 'available')->get();
+        $workcenters = WorkCenter::all();
 
         //get shift based on current time
         $shift = $this->getShiftByTime();
@@ -47,6 +48,7 @@ class ProductionController extends Controller
             'workcenters' => $workcenters,
             'shift' => $shift,
             'date' => Carbon::now()->format('Y-m-d'),
+            'user' => Auth::user(),
         ]);
     }
 
@@ -58,6 +60,7 @@ class ProductionController extends Controller
             'workcenter' => 'required',
             'lot' => 'required',
             'qty' => 'required|integer|min:1',
+            'employee_id' => 'required',
         ]);
 
         //check qty lots
@@ -75,6 +78,8 @@ class ProductionController extends Controller
                 'workcenter_id' => $request->input('workcenter'),
                 'lot_id' => $request->input('lot'),
                 'qty_output' => $request->input('qty'),
+                'operator_id' => $request->input('employee_id'),
+                'note' => $request->input('note', null),
             ]);
 
             // update lot qty remaining & status if 0 qty remaining
@@ -89,7 +94,7 @@ class ProductionController extends Controller
             $lot->save();
 
             DB::commit();
-            return redirect()->back()->with('success', 'Lot berhasil disimpan.');
+            return redirect()->back()->with('success', 'Proses produksi berhasil.');
 
         } catch (Throwable $e) {
             DB::rollBack();
