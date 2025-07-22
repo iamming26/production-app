@@ -6,7 +6,7 @@
         </button>
 
         <span class="ms-auto text-muted">
-            {{ $user->role }} - <strong>{{ $user->name }}</strong>
+            {{ strtoupper($user->role) }} - <strong>{{ strtoupper($user->name) }}</strong>
         </span>
     </div>
 </nav>

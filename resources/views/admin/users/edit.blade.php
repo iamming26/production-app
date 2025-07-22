@@ -5,12 +5,12 @@
     <h2 class="mb-4">Create User</h2>
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('admin.users.update', $editUser->id) }}" method="POST">
+            <form action="{{ route('admin.users.update', $editUser->employee_id) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="mb-3">
                 <label for="employee_id" class="form-label">Employee ID</label>
-                <input type="text" class="form-control @error('employee_id') is-invalid @enderror" id="employee_id" name="employee_id" value="{{ old('employee_id', $editUser->employee_id) }}">
+                <input type="text" class="form-control @error('employee_id') is-invalid @enderror" id="employee_id" name="employee_id" value="{{ old('employee_id', $editUser->employee_id) }}" readonly>
                 @error('employee_id')
                 <div class="invalid-feedback">
                 {{ $message }}

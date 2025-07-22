@@ -45,15 +45,15 @@ class UserController extends Controller
             'password' => bcrypt('123'), // Default password
         ]);
 
-        return redirect()->route('admin.users.index')->with('success', 'User created successfully.');
+        return redirect()->route('admin.users')->with('success', 'User created successfully.');
     }
 
     public function edit($id)
     {
-        $user = DB::table('users')->where('id', $id)->first();
+        $user = DB::table('users')->where('employee_id', $id)->first();
 
         if (!$user) {
-            return redirect()->route('admin.users.index')->with('error', 'User not found.');
+            return redirect()->route('admin.users')->with('error', 'User not found.');
         }
 
         return view('admin.users.edit', [
@@ -64,40 +64,40 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'employee_id' => 'required|unique:users,employee_id,' . $id,
+        $request->validate([            
+            'employee_id' => 'required',
             'name' => 'required',
             'role' => 'required|in:supervisor,operator',
         ]);
 
-        DB::table('users')->where('id', $id)->update([
+        DB::table('users')->where('employee_id', $id)->update([
             'employee_id' => $request->employee_id,
             'name' => $request->name,
             'role' => $request->role,
         ]);
 
-        return redirect()->route('admin.users.index')->with('success', 'User updated successfully.');
+        return redirect()->route('admin.users')->with('success', 'User updated successfully.');
     }
 
     public function destroy($id)
     {
-        $user = DB::table('users')->where('id', $id)->first();
+        $user = DB::table('users')->where('employee_id', $id)->first();
 
         if (!$user) {
-            return redirect()->route('admin.users.index')->with('error', 'User not found.');
+            return redirect()->route('admin.users')->with('error', 'User not found.');
         }
 
-        DB::table('users')->where('id', $id)->delete();
+        DB::table('users')->where('employee_id', $id)->delete();
 
-        return redirect()->route('admin.users.index')->with('success', 'User deleted successfully.');
+        return redirect()->route('admin.users')->with('success', 'User deleted successfully.');
     }
 
     public function show($id)
     {
-        $user = DB::table('users')->where('id', $id)->first();
+        $user = DB::table('users')->where('employee_id', $id)->first();
 
         if (!$user) {
-            return redirect()->route('admin.users.index')->with('error', 'User not found.');
+            return redirect()->route('admin.users')->with('error', 'User not found.');
         }
 
         return view('admin.users.show', [
