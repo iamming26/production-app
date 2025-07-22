@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('lots', function (Blueprint $table) {
+<<<<<<< HEAD
             $table->id();
+=======
+>>>>>>> dev-romi
             $table->string('lot_id')->unique();
             $table->integer('qty');
             $table->integer('qty_remaining');

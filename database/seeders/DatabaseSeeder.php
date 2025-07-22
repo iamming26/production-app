@@ -42,6 +42,18 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123')
         ]);
 
+<<<<<<< HEAD
+=======
+        for ($i = 4; $i <= 100; $i++) {
+            User::create([
+                'employee_id' => 'EMP00' . $i,
+                'name' => 'Operator ' . $i,
+                'role' => 'operator',
+                'password' => Hash::make('123')
+            ]);
+        }
+
+>>>>>>> dev-romi
         // Uncomment the following lines to create a default user
         // User::create([
         //     'name' => 'Admin',

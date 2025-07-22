@@ -8,6 +8,10 @@ use App\Models\Production;
 use App\Models\WorkCenter;
 use Carbon\Carbon;
 use DateTime;
+<<<<<<< HEAD
+=======
+use Illuminate\Support\Facades\Auth;
+>>>>>>> dev-romi
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Throwable; 
@@ -36,8 +40,13 @@ class ProductionController extends Controller
 
     public function create()
     {
+<<<<<<< HEAD
         $lots = Lot::select('*')->where('status', 'available')->get();
         $workcenters = WorkCenter::select('*')->get();
+=======
+        $lots = Lot::where('status', 'available')->get();
+        $workcenters = WorkCenter::all();
+>>>>>>> dev-romi
 
         //get shift based on current time
         $shift = $this->getShiftByTime();
@@ -47,6 +56,10 @@ class ProductionController extends Controller
             'workcenters' => $workcenters,
             'shift' => $shift,
             'date' => Carbon::now()->format('Y-m-d'),
+<<<<<<< HEAD
+=======
+            'user' => Auth::user(),
+>>>>>>> dev-romi
         ]);
     }
 
@@ -58,6 +71,10 @@ class ProductionController extends Controller
             'workcenter' => 'required',
             'lot' => 'required',
             'qty' => 'required|integer|min:1',
+<<<<<<< HEAD
+=======
+            'employee_id' => 'required',
+>>>>>>> dev-romi
         ]);
 
         //check qty lots
@@ -75,6 +92,11 @@ class ProductionController extends Controller
                 'workcenter_id' => $request->input('workcenter'),
                 'lot_id' => $request->input('lot'),
                 'qty_output' => $request->input('qty'),
+<<<<<<< HEAD
+=======
+                'operator_id' => $request->input('employee_id'),
+                'note' => $request->input('note', null),
+>>>>>>> dev-romi
             ]);
 
             // update lot qty remaining & status if 0 qty remaining
@@ -89,7 +111,11 @@ class ProductionController extends Controller
             $lot->save();
 
             DB::commit();
+<<<<<<< HEAD
             return redirect()->back()->with('success', 'Lot berhasil disimpan.');
+=======
+            return redirect()->back()->with('success', 'Proses produksi berhasil.');
+>>>>>>> dev-romi
 
         } catch (Throwable $e) {
             DB::rollBack();

@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\Lot;
+<<<<<<< HEAD
+=======
+use Illuminate\Support\Facades\Auth;
+>>>>>>> dev-romi
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Throwable;  
@@ -14,6 +18,7 @@ class LotController extends Controller
 {
     public function index()
     {
+<<<<<<< HEAD
         try {
             DB::beginTransaction();
 
@@ -31,6 +36,16 @@ class LotController extends Controller
                 ->withErrors(['error' => 'Gagal mengambil data: ' . $e->getMessage()]);
         }
 
+=======
+        $lots = Lot::select('lot_id', 'qty', 'qty_remaining', 'status')
+            ->orderBy('lot_id', 'asc')
+            ->get();
+
+        return view('supervisor.lot.index', [
+            'lots' => $lots,
+            'user' => Auth::user(),
+        ]);
+>>>>>>> dev-romi
     }
 
     public function create()
