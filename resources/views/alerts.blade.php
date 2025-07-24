@@ -31,3 +31,23 @@
     });
 </script>
 @endif
+
+<script>
+    function confirmDelete(event, formId) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Data will be deleted!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Ya, hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById(formId).submit();
+            }
+        });
+    }
+</script>

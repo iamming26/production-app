@@ -13,6 +13,17 @@ class LoginController extends Controller
      */
     public function index()
     {
+        if (Auth::check()) {
+            $user = Auth::user();
+            if ($user->role === 'admin') {
+                return redirect()->route('admin.dashboard');
+            } elseif ($user->role === 'supervisor') {
+                return redirect()->route('supervisor.dashboard');
+            } elseif ($user->role === 'operator') {
+                return redirect()->route('operator.dashboard');
+            }
+        }
+
         return view('auth.login');
     }
 

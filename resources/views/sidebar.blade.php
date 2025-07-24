@@ -40,7 +40,7 @@
                 <a class="nav-link text-white {{ request()->routeIs('admin.dashboard*') ? 'active fw-bold' : '' }}" href="{{ route('admin.dashboard') }}">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ request()->routeIs('admin.users*') ? 'active fw-bold' : '' }}" href="{{ route('admin.users.index') }}">Users</a>
+                <a class="nav-link text-white {{ request()->routeIs('admin.users*') ? 'active fw-bold' : '' }}" href="{{ route('admin.users') }}">Users</a>
             </li>
         @endif
 
@@ -79,7 +79,36 @@
 =======
     {{-- Logout --}}
     <div class="mt-auto px-3 pb-4">
-        <a class="nav-link text-danger" href="{{ route('logout') }}">Logout</a>
+        <a href="#" class="nav-link text-danger" id="logout-button">Logout</a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
     </div>
+
 </nav>
 >>>>>>> dev-romi
+
+@section('footer')
+<script>
+    document.getElementById('logout-button').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        Swal.fire({
+            title: 'Logout?',
+            text: "Are you sure you want to logout?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Logout',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('logout-form').submit();
+            }
+        });
+    });
+</script>
+
+@endsection

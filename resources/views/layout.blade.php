@@ -15,7 +15,7 @@
 >>>>>>> dev-romi
   <style>
     body {
-      background-color: #f8f9fa;
+      background-color: #dbeafe;
     }
 
 <<<<<<< HEAD
@@ -65,6 +65,7 @@
       background-color: #e9ecef;
     }
   </style>
+  @yield('css')
 </head>
 <body>
 

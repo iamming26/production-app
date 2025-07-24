@@ -6,7 +6,7 @@ Route::redirect('/', '/login');
 
 Route::get('/login', [\App\Http\Controllers\LoginController::class, 'index'])->name('login');
 Route::post('/login', [\App\Http\Controllers\LoginController::class, 'authenticate'])->name('login.authenticate');
-Route::get('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
+Route::post('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
 
 <<<<<<< HEAD
 Route::middleware(['auth'])->group(function () {
@@ -41,7 +41,7 @@ Route::middleware(['auth'])->group(function () {
 =======
 Route::middleware(['auth', 'isAdmin'])->prefix('/admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/users', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.index');
+    Route::get('/users', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('users');
     Route::get('/users/create', [\App\Http\Controllers\Admin\UserController::class, 'create'])->name('users.create');
     Route::post('/users', [\App\Http\Controllers\Admin\UserController::class, 'store'])->name('users.store');
     Route::get('/users/{id}/edit', [\App\Http\Controllers\Admin\UserController::class, 'edit'])->name('users.edit');

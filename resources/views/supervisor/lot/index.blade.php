@@ -9,7 +9,7 @@
         </span>
         </div>
         <div class="card-body">
-            <table class="table table-hover mb-0">
+            <table class="table table-hover mb-0" id="data_table">
                 <thead class="table-light">
                 <tr>
                     <th>#</th>
@@ -53,6 +53,11 @@
     </div>
 @endsection
 
+@section('css')
+<link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+@endsection
+
 @section('footer')
+    @include('datatable')
     @include('alerts')
 @endsection
