@@ -27,7 +27,9 @@ class LotController extends Controller
 
     public function create()
     {
-        return view('supervisor.lot.create');
+        return view('supervisor.lot.create', [
+            'user' => Auth::user(),
+        ]);
     }
 
     public function store(Request $request)

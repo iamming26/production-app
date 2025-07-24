@@ -1,7 +1,7 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
-  <div class="card shadow-sm">
+  <div class="card main-card shadow-sm">
     <div class="card-header d-flex justify-content-between align-items-center">
     <h5 class="mb-0">Input Production</h5>
     </div>
@@ -9,10 +9,7 @@
         
     <form action="{{ route('operator.production.store') }}" method="POST">
         @csrf
-<<<<<<< HEAD
-=======
         <input type="hidden" name="employee_id" value="{{ $user->employee_id }}">
->>>>>>> dev-romi
         <div class="mb-3">
             <label for="date" class="form-label">Date</label>
             <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" name="date" value="{{ $date }}" readonly>

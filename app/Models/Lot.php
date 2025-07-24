@@ -6,9 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lot extends Model
 {
-<<<<<<< HEAD
-    protected $guarded = ['id'];
-=======
     protected $primaryKey = 'lot_id';
 
     protected $fillable = [
@@ -21,5 +18,4 @@ class Lot extends Model
       protected $casts = [
         'lot_id' => 'string',
     ];
->>>>>>> dev-romi
 }

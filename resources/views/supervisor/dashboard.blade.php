@@ -1,7 +1,7 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
-    <div class="card shadow-sm">
+    <div class="card main-card bg-supervisor-primary shadow-sm">
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Dashboard</h5>
         </div>
@@ -11,30 +11,45 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-    
-=======
 
-    <div class="card shadow-sm mt-3">
-        {{-- <div class="card-header d-flex justify-content-between align-items-center">
+    <div class="card main-card shadow-sm mt-3">
+        <div class="card-header main-card bg-supervisor-warning d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Dashboard</h5>
-        </div> --}}
+        </div>
         <div class="card-body">
+            <div id="chart_productivity" style="width: 100%; height: 50vh;"></div>
             <div class="col-md-12">
-                <div id="main" style="width: 100%; height: 50vh;"></div>
             </div>
         </div>
     </div>
 @endsection
 
-@section('footer')
+@section('styles')
+    <style>
+        .bg-supervisor-danger {
+            background-color: var(--bg-danger);
+        }
+        .bg-supervisor-primary {
+            background-color: var(--bg-primary);
+        }
+        .bg-supervisor-warning {
+            background-color: var(--bg-warning);
+        }
+        .bg-supervisor-success {
+            background-color: var(--bg-success);
+        }
+    </style>
+    
+@endsection
+
+@section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js"></script>
 <script>
     const shifts = @json($data['shifts']);
     const dates = @json($data['dates']);
     const values = @json($data['values']);
 
-    var chartDom = document.getElementById('main');
+    var chartDom = document.getElementById('chart_productivity');
     var myChart = echarts.init(chartDom);
 
     var app = {};
@@ -187,5 +202,4 @@
 
     option && myChart.setOption(option);
 </script>
->>>>>>> dev-romi
 @endsection

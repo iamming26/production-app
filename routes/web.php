@@ -7,6 +7,9 @@ Route::redirect('/', '/login');
 Route::get('/login', [\App\Http\Controllers\LoginController::class, 'index'])->name('login');
 Route::post('/login', [\App\Http\Controllers\LoginController::class, 'authenticate'])->name('login.authenticate');
 Route::post('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
+// for supporing debugging delete this route if project is in production
+Route::get('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
+
 
 Route::middleware(['auth', 'isAdmin'])->prefix('/admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
