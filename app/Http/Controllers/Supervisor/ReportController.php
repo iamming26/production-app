@@ -5,10 +5,7 @@ namespace App\Http\Controllers\Supervisor;
 use App\Http\Controllers\Controller;
 use App\Models\Production;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-=======
 use Illuminate\Support\Facades\Auth;
->>>>>>> dev-romi
 
 class ReportController extends Controller
 {
@@ -29,9 +26,6 @@ class ReportController extends Controller
         // Ambil data
         $productions = $query->with(['workcenter', 'lot'])->get();
 
-<<<<<<< HEAD
-        return view('supervisor.report.index', compact('productions'));
-=======
         return view('supervisor.report.index', [
             'productions' => $productions,
             'user' => Auth::user(),
@@ -39,17 +33,12 @@ class ReportController extends Controller
             'end_date' => $request->end_date,
             'shift' => $request->shift,
         ]);
->>>>>>> dev-romi
     }
 
     public function detail()
     {
-<<<<<<< HEAD
-        return view('supervisor.report.detail');
-=======
         return view('supervisor.report.detail', [
             'user' => Auth::user(),
         ]);
->>>>>>> dev-romi
     }
 }
