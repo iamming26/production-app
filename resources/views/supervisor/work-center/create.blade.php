@@ -1,7 +1,7 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
-  <div class="card shadow-sm">
+  <div class="card main-card shadow-sm">
     <div class="card-header d-flex justify-content-between align-items-center">
     <h5 class="mb-0">Add Work Center</h5>
     </div>
@@ -45,6 +45,6 @@
 </div>  
 @endsection
 
-@section('footer')
+@section('scripts')
     @include('alerts')
 @endsection

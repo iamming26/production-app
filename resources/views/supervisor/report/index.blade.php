@@ -1,7 +1,7 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
-    <div class="card shadow-sm">
+    <div class="card main-card shadow-sm">
         <div class="card-header d-flex justify-content-between align-items-center">
         <h5 class="mb-0">Report Productions</h5>
         <span>
@@ -34,7 +34,7 @@
                 </div>
             </form>
 
-            <table class="table table-bordered" id="data_table">
+            <table class="table table-bordered my-table" id="data_table">
                 <thead>
                     <tr>
                         <th>Tanggal</th>
@@ -62,11 +62,11 @@
     </div>
 @endsection
 
-@section('css')
+@section('styles')
 <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 @endsection
 
-@section('footer')
+@section('scripts')
     @include('datatable')
     @include('alerts')
 @endsection
