@@ -3,23 +3,16 @@
 namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
-<<<<<<< HEAD
-use Illuminate\Http\Request;
-=======
 use App\Models\Production;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
->>>>>>> dev-romi
 
 class DashboardController extends Controller
 {
     public function index()
     {
-<<<<<<< HEAD
-        return view('supervisor.dashboard');
-=======
         $start_date = Carbon::today()->subDays(5)->format('Y-m-d');
         $end_date = Carbon::today()->format('Y-m-d');
 
@@ -69,6 +62,5 @@ class DashboardController extends Controller
         }
 
         return $values;
->>>>>>> dev-romi
     }
 }

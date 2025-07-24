@@ -276,7 +276,7 @@
     border: 1px solid var(--dt-border);
     border-radius: 0.25rem;
     margin: 0 2px;
-    padding: 0.375rem 0.75rem;
+    /* padding: 0.375rem 0.75rem; */
     font-size: 0.875rem;
     transition: all 0.3s ease;
   }
